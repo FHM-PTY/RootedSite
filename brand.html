@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Atelier &middot; ROOTED</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Progress Bar -->
+  <div class="topbar"><div class="topbar-fill" style="width: 65%;"></div></div>
+
+  <!-- ROOTED Typographic Wordmark -->
+  <a href="index.html" class="brandmark" aria-label="ROOTED">
+    R<span>O</span><span class="rooted-o"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="10"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><path d="M50 52 L26 76 M50 68 L32 86 M50 52 L74 76 M50 68 L68 86"/></svg></span>TED
+  </a>
+
+  <!-- Top-Right Actions -->
+  <div class="top-actions">
+    <a href="cart.html" class="icon-btn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="label">Cart</span>
+      <span class="badge">2</span>
+    </a>
+  </div>
+
+  <!-- Navigation Dock: Home, Discover (Active), Cart -->
+  <nav class="navrail">
+    <div class="navrail-inner">
+      <a href="index.html" class="navlink"><span class="dot"></span> <span>Home</span></a>
+      <a href="dashboard.html" class="navlink active"><span class="dot"></span> <span>Discover</span></a>
+      <a href="cart.html" class="navlink"><span class="dot"></span> <span>Cart</span></a>
+    </div>
+  </nav>
+
+  <!-- Brand Storefront Hero -->
+  <header class="section" style="padding-top: 130px; padding-bottom: 40px;">
+    <div class="brand-masthead">
+      <div id="brandHeaderLogo" class="brand-masthead-logo sw1">BT</div>
+      <div class="brand-masthead-info">
+        <span id="brandHeaderHub" class="meta-hub">Salt River &middot; Cape Town</span>
+        <h1 id="brandHeaderTitle">BOKKIE TAILORS</h1>
+        <p id="brandHeaderBio">
+          Rooted in the industrial textile corridors of Salt River. Bokkie Tailors produces heavy-gauge chore jackets, unlined utility vests, and durable cotton duck trousers crafted to outlive trend cycles. Managed directly through ROOTED logistics.
+        </p>
+
+        <!-- Brand Quick Switcher -->
+        <div class="brand-switch-bar">
+          <span style="font-size: 11.5px; color: var(--ink-soft); align-self: center;">Switch Atelier:</span>
+          <button class="brand-switch-btn active" onclick="loadBrand('bokkie')">Bokkie Tailors</button>
+          <button class="brand-switch-btn" onclick="loadBrand('nkosi')">Nkosi Studio</button>
+          <button class="brand-switch-btn" onclick="loadBrand('jacaranda')">Studio Jacaranda</button>
+          <button class="brand-switch-btn" onclick="loadBrand('veld')">Veld Craft</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Categorized Garment Inventory -->
+  <section class="section" style="padding-top: 20px; padding-bottom: 70px;">
+    <div class="shop-coll-header" style="text-align: left; margin-bottom: 24px;">
+      <h2 style="font-size: 26px;">Garments in Rotation</h2>
+      <p>Filter this brand's atelier catalog by silhouette and production status.</p>
+    </div>
+
+    <!-- Category Filter Bar -->
+    <div class="coll-filter-bar" style="justify-content: flex-start; margin-bottom: 34px;">
+      <button class="coll-tab active" onclick="filterBrandCategory('all', this)">ALL PIECES (<span id="catCountAll">6</span>)</button>
+      <button class="coll-tab" onclick="filterBrandCategory('pants', this)">PANTS</button>
+      <button class="coll-tab" onclick="filterBrandCategory('shirts', this)">SHIRTS</button>
+      <button class="coll-tab" onclick="filterBrandCategory('hoodies', this)">HOODIES & JACKETS</button>
+      <button class="coll-tab" onclick="filterBrandCategory('bestseller', this)">FAST SELLERS</button>
+      <button class="coll-tab" onclick="filterBrandCategory('new', this)">NEW DROPS</button>
+    </div>
+
+    <!-- Dynamic Brand Garments Grid -->
+    <div class="collection-grid" id="brandItemsGrid"></div>
+  </section>
+
+  <!-- Brand Owner / Founder Journey Section (Bottom) -->
+  <section class="section wrap-paper" style="border-top: 1px solid var(--line);">
+    <div class="section-head" style="margin-bottom: 20px;">
+      <div class="eyebrow">THE MAKER'S ORIGIN</div>
+      <h2>The hands behind the garments.</h2>
+      <p class="lede">Learn why the label was founded, the creative discipline that inspires each drop, and the founder's vision for South African fashion.</p>
+    </div>
+
+    <div class="founder-story-card">
+      <div class="founder-media">
+        <img id="founderImg" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80" alt="Brand Founder">
+        <div id="founderBadge" class="founder-badge">Kobus van der Merwe &middot; Founder & Head Patternmaker</div>
+      </div>
+
+      <div class="founder-copy">
+        <h3 id="founderName">Kobus van der Merwe &middot; Founder Journey</h3>
+        <div id="founderRole" class="role-tag">BOKKIE TAILORS &middot; SALT RIVER, CAPE TOWN</div>
+
+        <div class="founder-text-block">
+          <div>
+            <strong>How It Started:</strong>
+            <p id="founderJourney">
+              "We started in 2019 on a solitary vintage Singer sewing machine tucked away in an old Salt River brick warehouse. Frustrated by lightweight synthetic imports that tore after three washes, we set out to make clothes engineered like industrial equipment."
+            </p>
+          </div>
+
+          <div>
+            <strong>The Inspiration:</strong>
+            <p id="founderInspiration">
+              "Our inspiration comes from Southern African workwear roots—Karoo farm jackets, dockworker smocks from Table Bay, and mineral-washed heavy cotton duck that gains character with age rather than decaying."
+            </p>
+          </div>
+
+          <div>
+            <strong>What We Hope to Achieve:</strong>
+            <p id="founderGoal">
+              "By partnering with ROOTED, we don't have to spend twelve hours a day answering Instagram DMs and queuing at couriers. We want to prove that premium, world-class garments can be manufactured right here in South Africa at scale."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clean Editorial Footer -->
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      <div>&copy; 2026 ROOTED South Africa. Discover local. Wear local.</div>
+      <div class="footer-bottom-links">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Discover</a>
+        <a href="cart.html">Cart</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Brand Data & Logic -->
+  <script>
+    const brandData = {
+      bokkie: {
+        title: "BOKKIE TAILORS",
+        hub: "Salt River · Cape Town",
+        bio: "Rooted in the industrial textile corridors of Salt River. Bokkie Tailors produces heavy-gauge chore jackets, unlined utility vests, and durable cotton duck trousers crafted to outlive trend cycles. Managed directly through ROOTED logistics.",
+        emblemClass: "sw1",
+        emblemText: "BT",
+        founder: {
+          name: "Kobus van der Merwe",
+          badge: "Kobus van der Merwe · Founder & Head Patternmaker",
+          role: "BOKKIE TAILORS · SALT RIVER, CAPE TOWN",
+          img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80",
+          journey: "\"We started in 2019 on a solitary vintage Singer sewing machine tucked away in an old Salt River brick warehouse. Frustrated by lightweight synthetic imports that tore after three washes, we set out to make clothes engineered like industrial equipment.\"",
+          inspiration: "\"Our inspiration comes from Southern African workwear roots—Karoo farm jackets, dockworker smocks from Table Bay, and mineral-washed heavy cotton duck that gains character with age rather than decaying.\"",
+          goal: "\"By partnering with ROOTED, we don't have to spend twelve hours a day answering Instagram DMs and queuing at couriers. We want to prove that premium, world-class garments can be manufactured right here in South Africa at scale.\""
+        },
+        items: [
+          { name: "Overberg Field Jacket", cat: "hoodies", status: "bestseller", price: 2450, tag: "Fast Seller", img: "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=600&auto=format&fit=crop&q=80" },
+          { name: "Table Bay Deck Vest", cat: "hoodies", status: "new", price: 1890, tag: "New Drop", img: "https://images.unsplash.com/photo-1544441893-675973e31985?w=600&auto=format&fit=crop&q=80" },
+          { name: "Salt River Slub Trouser", cat: "pants", status: "bestseller", price: 1750, tag: "Fast Seller", img: "https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=600&auto=format&fit=crop&q=80" },
+          { name: "Atelier Apron Shirt", cat: "shirts", status: "new", price: 1350, tag: "New Drop", img: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&auto=format&fit=crop&q=80" },
+          { name: "Cape Point Chore Coat", cat: "hoodies", status: "bestseller", price: 2200, tag: "Fast Seller", img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&auto=format&fit=crop&q=80" },
+          { name: "Raw Duck Carpenter Pant", cat: "pants", status: "new", price: 1650, tag: "New Drop", img: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=600&auto=format&fit=crop&q=80" }
+        ]
+      },
+      nkosi: {
+        title: "NKOSI STUDIO",
+        hub: "Maboneng · Johannesburg",
+        bio: "Inner-city architectural streetwear milled from 500gsm loopback fleece, oversized boxy tailoring, and panelled utilitarian layers celebrating modern Joburg youth culture.",
+        emblemClass: "sw5",
+        emblemText: "NS",
+        founder: {
+          name: "Sipho Nkosi",
+          badge: "Sipho Nkosi · Creative Director & Textile Artist",
+          role: "NKOSI STUDIO · MABONENG, JOHANNESBURG",
+          img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=80",
+          journey: "\"I started printing single-run screen tees in my student flat in Braamfontein in 2020. People resonated immediately with the weight of our fleece and the sharp, boxy silhouettes.\"",
+          inspiration: "\"Johannesburg's concrete geometry, taxi rank textures, and 90s kwaito aesthetic. We design streetwear that feels armored, heavy, and undeniably South African.\"",
+          goal: "\"We want to build a brand that stands shoulder-to-shoulder with global luxury streetwear without having to outsource a single stitch outside of Gauteng.\""
+        },
+        items: [
+          { name: "Maboneng Boxy Hoodie", cat: "hoodies", status: "bestseller", price: 1200, tag: "Fast Seller", img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&auto=format&fit=crop&q=80" },
+          { name: "Civic Raw Loopback Crew", cat: "hoodies", status: "new", price: 1100, tag: "New Drop", img: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&auto=format&fit=crop&q=80" },
+          { name: "Bree Heavyweight Overshirt", cat: "shirts", status: "new", price: 1450, tag: "New Drop", img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&auto=format&fit=crop&q=80" },
+          { name: "Maboneng Cargo Sweats", cat: "pants", status: "bestseller", price: 1300, tag: "Fast Seller", img: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=600&auto=format&fit=crop&q=80" }
+        ]
+      },
+      jacaranda: {
+        title: "STUDIO JACARANDA",
+        hub: "Pretoria West · Pretoria",
+        bio: "Clean lines, heavy unbleached duck canvas, and durable utilitarian staples created in the heart of the capital district.",
+        emblemClass: "sw6",
+        emblemText: "SJ",
+        founder: {
+          name: "Anelisa Smit",
+          badge: "Anelisa Smit · Founder & Tailor",
+          role: "STUDIO JACARANDA · PRETORIA WEST",
+          img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80",
+          journey: "\"Coming from a family of Pretoria garment workers, I was determined to revive locally patterned work jackets that balance feminine and unisex structure.\"",
+          inspiration: "\"Government architectural brutalism, Jacaranda wood tones, and honest cotton weaves that endure heavy daily wear.\"",
+          goal: "\"To prove that sustainable, slow fashion can sustain high-volume demand when supported by ROOTED managed commerce.\""
+        },
+        items: [
+          { name: "Union Shirt Jacket", cat: "shirts", status: "new", price: 1690, tag: "New Drop", img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&auto=format&fit=crop&q=80" },
+          { name: "Arcadia Heavyweight Knit", cat: "hoodies", status: "bestseller", price: 1400, tag: "Fast Seller", img: "https://images.unsplash.com/photo-1548883354-7622d03aca27?w=600&auto=format&fit=crop&q=80" },
+          { name: "Wide Leg Twill Pant", cat: "pants", status: "new", price: 1300, tag: "New Drop", img: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=600&auto=format&fit=crop&q=80" }
+        ]
+      },
+      veld: {
+        title: "VELD CRAFT",
+        hub: "Morningside · Durban",
+        bio: "Subtropical coastal tailoring, sanded raw twill trousers, and unbleached flax linens engineered for humidity, coastal winds, and relaxed leisure.",
+        emblemClass: "sw3",
+        emblemText: "VC",
+        founder: {
+          name: "Tariq Pillay",
+          badge: "Tariq Pillay · Founder & Artisan",
+          role: "VELD CRAFT · MORNINGSIDE, DURBAN",
+          img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&auto=format&fit=crop&q=80",
+          journey: "\"Started making lightweight breathable trousers after realising almost all menswear in South Africa was too thick and stifling for Durban humidity.\"",
+          inspiration: "\"The Indian Ocean shoreline, cane-field cotton textures, and retro coastal work jackets.\"",
+          goal: "\"To export the easy, relaxed coastal South African aesthetic to every corner of the country.\""
+        },
+        items: [
+          { name: "Ochre Cargo Pant", cat: "pants", status: "bestseller", price: 1550, tag: "Fast Seller", img: "https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=600&auto=format&fit=crop&q=80" },
+          { name: "Coastline Varsity Jacket", cat: "hoodies", status: "bestseller", price: 1850, tag: "Fast Seller", img: "https://images.unsplash.com/photo-1548883354-7622d03aca27?w=600&auto=format&fit=crop&q=80" },
+          { name: "Subtropical Camp Shirt", cat: "shirts", status: "new", price: 1150, tag: "New Drop", img: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&auto=format&fit=crop&q=80" }
+        ]
+      }
+    };
+
+    let activeBrandKey = 'bokkie';
+    let activeCategory = 'all';
+
+    function loadBrand(brandKey) {
+      if (!brandData[brandKey]) brandKey = 'bokkie';
+      activeBrandKey = brandKey;
+
+      const brand = brandData[brandKey];
+      
+      const logo = document.getElementById('brandHeaderLogo');
+      logo.className = `brand-masthead-logo ${brand.emblemClass}`;
+      logo.innerText = brand.emblemText;
+      document.getElementById('brandHeaderHub').innerText = brand.hub;
+      document.getElementById('brandHeaderTitle').innerText = brand.title;
+      document.getElementById('brandHeaderBio').innerText = brand.bio;
+
+      document.querySelectorAll('.brand-switch-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.innerText.toLowerCase().includes(brandKey)) btn.classList.add('active');
+      });
+
+      document.getElementById('founderImg').src = brand.founder.img;
+      document.getElementById('founderBadge').innerText = brand.founder.badge;
+      document.getElementById('founderName').innerText = `${brand.founder.name} · Founder Journey`;
+      document.getElementById('founderRole').innerText = brand.founder.role;
+      document.getElementById('founderJourney').innerText = brand.founder.journey;
+      document.getElementById('founderInspiration').innerText = brand.founder.inspiration;
+      document.getElementById('founderGoal').innerText = brand.founder.goal;
+
+      activeCategory = 'all';
+      document.querySelectorAll('.coll-tab').forEach(t => t.classList.remove('active'));
+      document.querySelector('.coll-tab').classList.add('active');
+      renderItems();
+    }
+
+    function filterBrandCategory(cat, tabElem) {
+      document.querySelectorAll('.coll-tab').forEach(t => t.classList.remove('active'));
+      tabElem.classList.add('active');
+      activeCategory = cat;
+      renderItems();
+    }
+
+    function renderItems() {
+      const grid = document.getElementById('brandItemsGrid');
+      grid.innerHTML = '';
+      const brand = brandData[activeBrandKey];
+
+      const filtered = brand.items.filter(item => {
+        if (activeCategory === 'all') return true;
+        if (activeCategory === 'pants') return item.cat === 'pants';
+        if (activeCategory === 'shirts') return item.cat === 'shirts';
+        if (activeCategory === 'hoodies') return item.cat === 'hoodies';
+        if (activeCategory === 'bestseller') return item.status === 'bestseller';
+        if (activeCategory === 'new') return item.status === 'new';
+        return true;
+      });
+
+      document.getElementById('catCountAll').innerText = brand.items.length;
+
+      filtered.forEach(item => {
+        const card = document.createElement('a');
+        card.href = 'cart.html';
+        card.className = 'coll-card';
+        card.innerHTML = `
+          <div class="coll-card-thumb">
+            <span class="badge-tag">${item.tag}</span>
+            <img src="${item.img}" alt="${item.name}">
+          </div>
+          <div class="coll-card-meta">
+            <div class="prod-title">${item.name}</div>
+            <span class="prod-hub">${brand.title} &middot; ${brand.hub.split('·')[1]}</span>
+            <div class="coll-card-bottom">
+              <span class="prod-price">R ${item.price.toLocaleString('en-ZA')}</span>
+              <span class="bag-icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const requestedBrand = urlParams.get('brand');
+      if (requestedBrand && brandData[requestedBrand]) {
+        loadBrand(requestedBrand);
+      } else {
+        loadBrand('bokkie');
+      }
+    });
+  </script>
+
+</body>
+</html>

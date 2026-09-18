@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROOTED — Discover Local. Wear Local.</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="topbar"><div class="topbar-fill"></div></div>
+
+  <!-- ROOTED Typographic Wordmark -->
+  <a href="index.html" class="brandmark" aria-label="ROOTED">
+    R<span>O</span><span class="rooted-o"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="10"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><path d="M50 52 L26 76 M50 68 L32 86 M50 52 L74 76 M50 68 L68 86"/></svg></span>TED
+  </a>
+
+  <!-- Top-Right Actions: Profile & Cart -->
+  <div class="top-actions">
+    <button class="icon-btn" onclick="openDrawer('profileDrawer')">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span class="label">Profile</span>
+    </button>
+    <button class="icon-btn" onclick="openDrawer('cartDrawer')">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="label">Cart</span>
+      <span class="badge" id="cartCount">3</span>
+    </button>
+  </div>
+
+  <!-- Navigation Dock: Home, Discover, Cart -->
+  <nav class="navrail">
+    <div class="navrail-inner">
+      <a href="index.html" class="navlink active"><span class="dot"></span> <span>Home</span></a>
+      <a href="dashboard.html" class="navlink"><span class="dot"></span> <span>Discover</span></a>
+      <a href="cart.html" class="navlink"><span class="dot"></span> <span>Cart</span></a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="hero" class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-tag">MANAGED SOUTH AFRICAN APPAREL MARKETPLACE</div>
+      <h1>Discover local.<br><em>Wear local.</em></h1>
+      <p class="sub">The single home for emerging South African fashion houses. We handle the storefront, logistics, and data — you wear the culture.</p>
+      <div class="hero-actions">
+        <a href="#shop" class="btn">Shop Collection</a>
+        <a href="dashboard.html" class="btn ghost">Discover Ateliers</a>
+        <a href="for-brands.html" class="btn ghost">Brand Intake</a>
+      </div>
+    </div>
+
+    <!-- Fabric Swatch Strip -->
+    <div class="hero-strip">
+      <div class="hero-strip-track">
+        <div class="swatch sw1"><span>Raw Ochre Twill</span><small>Johannesburg CBD</small></div>
+        <div class="swatch sw2"><span>Karoo Sage Knit</span><small>Graaff-Reinet</small></div>
+        <div class="swatch sw3"><span>Gold Sunburst Flax</span><small>Durban North</small></div>
+        <div class="swatch sw4"><span>Ecru Looped Fleece</span><small>Salt River, CT</small></div>
+        <div class="swatch sw5"><span>Charcoal Canvas</span><small>Woodstock, CT</small></div>
+        <div class="swatch sw6"><span>Moss Heavy Cotton</span><small>Pretoria West</small></div>
+        <div class="swatch sw7"><span>Clay Ombre Mohair</span><small>Eastern Cape</small></div>
+        <div class="swatch sw8"><span>Fine Bone Rib</span><small>Maboneng, JHB</small></div>
+        <div class="swatch sw1"><span>Raw Ochre Twill</span><small>Johannesburg CBD</small></div>
+        <div class="swatch sw2"><span>Karoo Sage Knit</span><small>Graaff-Reinet</small></div>
+        <div class="swatch sw3"><span>Gold Sunburst Flax</span><small>Durban North</small></div>
+        <div class="swatch sw4"><span>Ecru Looped Fleece</span><small>Salt River, CT</small></div>
+        <div class="swatch sw5"><span>Charcoal Canvas</span><small>Woodstock, CT</small></div>
+        <div class="swatch sw6"><span>Moss Heavy Cotton</span><small>Pretoria West</small></div>
+        <div class="swatch sw7"><span>Clay Ombre Mohair</span><small>Eastern Cape</small></div>
+        <div class="swatch sw8"><span>Fine Bone Rib</span><small>Maboneng, JHB</small></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SHOP COLLECTION -->
+  <section id="shop" class="shop-coll-section">
+    <div class="shop-coll-header">
+      <h2>SHOP COLLECTION</h2>
+      <p>Find perfect pieces for every occasion from independent South African ateliers.</p>
+    </div>
+
+    <!-- Category Filter Bar -->
+    <div class="coll-filter-bar">
+      <button class="coll-tab active" onclick="filterCategory('all', this)">ALL</button>
+      <button class="coll-tab" onclick="filterCategory('new', this)">NEW</button>
+      <button class="coll-tab" onclick="filterCategory('bestseller', this)">Best Seller</button>
+      <button class="coll-tab" onclick="filterCategory('hoodies', this)">Hoodies</button>
+      <button class="coll-tab" onclick="filterCategory('tshirts', this)">T-Shirts</button>
+      <button class="coll-tab" onclick="filterCategory('jackets', this)">Jackets</button>
+      <button class="coll-tab" onclick="filterCategory('pants', this)">Pants</button>
+      <button class="coll-tab" onclick="filterCategory('accessories', this)">Accessories</button>
+    </div>
+
+    <!-- Hub District Filter -->
+    <div class="coll-hub-bar">
+      <button class="coll-hub-btn active" onclick="filterHub('all', this)">All Hubs</button>
+      <button class="coll-hub-btn" onclick="filterHub('pretoria', this)">Pretoria</button>
+      <button class="coll-hub-btn" onclick="filterHub('capetown', this)">Cape Town</button>
+      <button class="coll-hub-btn" onclick="filterHub('johannesburg', this)">Johannesburg</button>
+      <button class="coll-hub-btn" onclick="filterHub('durban', this)">Durban</button>
+    </div>
+
+    <!-- 8 Item Product Grid -->
+    <div class="collection-grid" id="collectionGrid">
+
+      <!-- Item 1: Shirt Jacket -->
+      <a href="cart.html" class="coll-card" data-cat="jackets" data-hub="pretoria" data-filter="new">
+        <div class="coll-card-thumb">
+          <span class="badge-tag">Pretoria</span>
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&auto=format&fit=crop&q=80" alt="Union Shirt Jacket">
+        </div>
+        <div class="coll-card-meta">
+          <div class="prod-title">Union Shirt Jacket</div>
+          <span class="prod-hub">Studio Jacaranda &middot; Pretoria</span>
+          <div class="coll-card-bottom">
+            <span class="prod-price">R 1,690</span>
+            <button class="bag-icon-btn" title="Add to Bag" onclick="event.preventDefault(); addToCartDrawer('Union Shirt Jacket', 1690, 'Pretoria');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Item 2: Oversized Hoodie -->
+      <a href="cart.html" class="coll-card" data-cat="hoodies" data-hub="johannesburg" data-filter="bestseller">
+        <div class="coll-card-thumb">
+          <span class="badge-tag">Joburg</span>
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&auto=format&fit=crop&q=80" alt="Oversized Boxy Hoodie">
+        </div>
+        <div class="coll-card-meta">
+          <div class="prod-title">Oversized Boxy Hoodie</div>
+          <span class="prod-hub">Nkosi Studio &middot; Johannesburg</span>
+          <div class="coll-card-bottom">
+            <span class="prod-price">R 1,200</span>
+            <button class="bag-icon-btn" title="Add to Bag" onclick="event.preventDefault(); addToCartDrawer('Oversized Boxy Hoodie', 1200, 'Johannesburg');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Item 3: Puffer Jacket -->
+      <a href="cart.html" class="coll-card" data-cat="jackets" data-hub="capetown" data-filter="new">
+        <div class="coll-card-thumb">
+          <span class="badge-tag">Cape Town</span>
+          <img src="https://images.unsplash.com/photo-1544441893-675973e31985?w=600&auto=format&fit=crop&q=80" alt="Quilted Puffer Jacket">
+        </div>
+        <div class="coll-card-meta">
+          <div class="prod-title">Quilted Puffer Jacket</div>
+          <span class="prod-hub">Signal Hill &middot; Cape Town</span>
+          <div class="coll-card-bottom">
+            <span class="prod-price">R 2,150</span>
+            <button class="bag-icon-btn" title="Add to Bag" onclick="event.preventDefault(); addToCartDrawer('Quilted Puffer Jacket', 2150, 'Cape Town');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Item 4: Canvas Jacket -->
+      <a href="cart.html" class="coll-card" data-cat="jackets" data-hub="capetown" data-filter="bestseller">
+        <div class="coll-card-thumb">
+          <span class="badge-tag">Cape Town</span>
+          <img src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=600&auto=format&fit=crop&q=80" alt="Overberg Canvas Jacket">
+        </div>
+        <div class="coll-card-meta">
+          <div class="prod-title">Overberg Canvas Jacket</div>
+          <span class="prod-hub">Bokkie Tailors &middot; Cape Town</span>
+          <div class="coll-card-bottom">
+            <span class="prod-price">R 2,450</span>
+            <button class="bag-icon-btn" title="Add to Bag" onclick="event.preventDefault(); addToCartDrawer('Overberg Canvas Jacket', 2450, 'Cape Town');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Item 5: Flannel Shirt -->
+      <a href="cart.html" class="coll-card" data-cat="tshirts" data-hub="johannesburg" data-filter="new">
+        <div class="coll-card-thumb">
+          <span class="badge-tag">Joburg</span>
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&auto=format&fit=crop&q=80" alt="Raw Calico Flannel Shirt">
+        </div>
+        <div class="coll-card-meta">
+          <div class="prod-title">Raw Calico Flannel Shirt</div>
+          <span class="prod-hub">Civic Wear &middot; Johannesburg</span>
+          <div class="coll-card-bottom">
+            <span class="prod-price">R 1,180</span>
+            <button class="bag-icon-btn" title="Add to Bag" onclick="event.preventDefault(); addToCartDrawer('Raw Calico Flannel Shirt', 1180, 'Johannesburg');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Item 6: Cargo Pant -->
+      <a href="cart.html" class="coll-card" data-cat="pants" data-hub="durban" data-filter="bestseller">
+        <div class="coll-card-thumb">
+          <span class="badge-tag">Durban</span>
+          <img src="https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=600&auto=format&fit=crop&q=80" alt="Ochre Cargo Pant">
+        </div>
+        <div class="coll-card-meta">
+          <div class="prod-title">Ochre Cargo Pant</div>
+          <span class="prod-hub">Veld Craft &middot; Durban</span>
+          <div class="coll-card-bottom">
+            <span class="prod-price">R 1,550</span>
+            <button class="bag-icon-btn" title="Add to Bag" onclick="event.preventDefault(); addToCartDrawer('Ochre Cargo Pant', 1550, 'Durban');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Item 7: Wide Leg Pant -->
+      <a href="cart.html" class="coll-card" data-cat="pants" data-hub="pretoria" data-filter="new">
+        <div class="coll-card-thumb">
+          <span class="badge-tag">Pretoria</span>
+          <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=600&auto=format&fit=crop&q=80" alt="Wide Leg Twill Pant">
+        </div>
+        <div class="coll-card-meta">
+          <div class="prod-title">Wide Leg Twill Pant</div>
+          <span class="prod-hub">District 012 &middot; Pretoria</span>
+          <div class="coll-card-bottom">
+            <span class="prod-price">R 1,300</span>
+            <button class="bag-icon-btn" title="Add to Bag" onclick="event.preventDefault(); addToCartDrawer('Wide Leg Twill Pant', 1300, 'Pretoria');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+          </div>
+        </div>
+      </a>
+
+      <!-- Item 8: Varsity Jacket -->
+      <a href="cart.html" class="coll-card" data-cat="jackets" data-hub="durban" data-filter="bestseller">
+        <div class="coll-card-thumb">
+          <span class="badge-tag">Durban</span>
+          <img src="https://images.unsplash.com/photo-1548883354-7622d03aca27?w=600&auto=format&fit=crop&q=80" alt="Coastline Varsity Jacket">
+        </div>
+        <div class="coll-card-meta">
+          <div class="prod-title">Coastline Varsity Jacket</div>
+          <span class="prod-hub">Veld Craft &middot; Durban</span>
+          <div class="coll-card-bottom">
+            <span class="prod-price">R 1,850</span>
+            <button class="bag-icon-btn" title="Add to Bag" onclick="event.preventDefault(); addToCartDrawer('Coastline Varsity Jacket', 1850, 'Durban');">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </button>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Campaign Banner -->
+    <div class="campaign-banner">
+      <div class="campaign-content">
+        <div class="camp-sub">2026 CAPSULE ALLOCATION</div>
+        <h3>BIG UNION</h3>
+        <p>A unified drop across Salt River, Maboneng, and Pretoria West. Exclusive pieces crafted in heavy South African cotton duck.</p>
+        <a href="cart.html" class="campaign-btn">Shop Capsule</a>
+      </div>
+      <div class="campaign-visual">
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900&auto=format&fit=crop&q=80" alt="Big Union Campaign Visual">
+      </div>
+    </div>
+  </section>
+
+  <!-- Clean Editorial Footer -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h4>ROOTED</h4>
+        <p>Discover local. Wear local. The single home for emerging South African fashion houses.</p>
+        <div style="display: flex; gap: 12px; color: var(--ink-soft); font-size: 14px;">
+          <span>&bull; CT</span>
+          <span>&bull; JHB</span>
+          <span>&bull; PTA</span>
+          <span>&bull; DBN</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="#shop" onclick="filterCategory('all', document.querySelector('.coll-tab'))">All Clothing</a></li>
+          <li><a href="#shop" onclick="filterCategory('new', document.querySelectorAll('.coll-tab')[1])">New Drops</a></li>
+          <li><a href="#shop" onclick="filterCategory('jackets', document.querySelectorAll('.coll-tab')[5])">Outerwear</a></li>
+          <li><a href="#shop" onclick="filterCategory('pants', document.querySelectorAll('.coll-tab')[6])">Trousers</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><button type="button" onclick="openAboutModal()">About Us</button></li>
+          <li><a href="for-brands.html">Join as Maker</a></li>
+          <li><a href="dashboard.html">Maker Console</a></li>
+          <li><a href="for-brands.html#pitch">Managed Selling</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Help</h5>
+        <ul>
+          <li><a href="#">Courier Tracking</a></li>
+          <li><a href="#">Returns & Fit Exchange</a></li>
+          <li><a href="#">Size Scale (RSA)</a></li>
+          <li><a href="#">Contact Ops</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 ROOTED South Africa. All Rights Reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- About Us Modal -->
+  <div class="modal-backdrop" id="aboutModal" onclick="closeAboutModal(event)">
+    <div class="modal-card">
+      <button class="modal-close" onclick="document.getElementById('aboutModal').classList.remove('open')">&times;</button>
+      <div class="eyebrow" style="margin-bottom: 8px;">ABOUT ROOTED</div>
+      <h3>Discover local. Wear local.</h3>
+      <p>
+        <strong>ROOTED</strong> is a managed online marketplace for emerging South African clothing brands. Instead of each small brand struggling to build its own storefront, buy traffic, and manage domestic courier logistics, all ateliers sell through one consolidated platform.
+      </p>
+      <p>
+        <strong>What we hope to achieve:</strong><br>
+        1. <strong>Managed Selling:</strong> Enable artisans to focus strictly on craft while our team handles listing, stock storage, packaging, and nationwide delivery.<br>
+        2. <strong>Shared Discovery:</strong> Create a natural cross-pollination flywheel where customers exploring one brand naturally discover peer designers across Cape Town, Johannesburg, Pretoria, and Durban.<br>
+        3. <strong>Data as the Real Product:</strong> Turn every checkout into actionable telemetry for makers—giving local brands live insight into sell-through velocity, sizing demand, and production planning.
+      </p>
+      <div style="margin-top: 24px;">
+        <button class="btn" style="width: 100%; justify-content: center;" onclick="document.getElementById('aboutModal').classList.remove('open')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Slide-Over Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop" onclick="closeAllDrawers()"></div>
+  <aside class="drawer" id="profileDrawer">
+    <div class="drawer-head">
+      <h3>Customer Profile</h3>
+      <button class="drawer-close" onclick="closeAllDrawers()">&times;</button>
+    </div>
+    <div class="drawer-body">
+      <div class="data-group">
+        <label>Full Name & Surname</label>
+        <div class="data-box">Thabo Mokoena</div>
+      </div>
+      <div class="data-group">
+        <label>Email Address</label>
+        <div class="data-box">thabo.mokoena@gmail.com</div>
+      </div>
+      <div class="data-group">
+        <label>Shipping Address</label>
+        <div class="data-box">14 Lynnwood Road, Brooklyn, Pretoria, 0181</div>
+      </div>
+      <div class="data-group">
+        <label>Contact Number</label>
+        <div class="data-box">+27 82 490 1192</div>
+      </div>
+      <div class="data-group">
+        <label>Wardrobe Preferences</label>
+        <div class="pill-row">
+          <span class="pref-pill selected">Heavy Canvas</span>
+          <span class="pref-pill selected">Streetwear</span>
+          <span class="pref-pill">Knitwear</span>
+        </div>
+      </div>
+      <div class="data-group">
+        <label>Department Filter</label>
+        <div class="pill-row">
+          <span class="pref-pill selected">All Wardrobe</span>
+          <span class="pref-pill">Menswear</span>
+          <span class="pref-pill">Womenswear</span>
+        </div>
+      </div>
+    </div>
+    <div class="drawer-foot">
+      <button class="btn" style="width: 100%; justify-content: center;" onclick="closeAllDrawers()">Save Preferences</button>
+    </div>
+  </aside>
+
+  <!-- Cart Drawer -->
+  <aside class="drawer" id="cartDrawer">
+    <div class="drawer-head">
+      <h3>Universal Bag</h3>
+      <button class="drawer-close" onclick="closeAllDrawers()">&times;</button>
+    </div>
+    <div class="drawer-body" id="cartItemsContainer">
+      <div class="cart-item-row">
+        <input type="checkbox" class="cart-check" checked data-price="1690" onchange="calcCartTotal()">
+        <div class="cart-thumb"></div>
+        <div class="cart-meta">
+          <b>Union Shirt Jacket</b>
+          <span>Studio Jacaranda &middot; Pretoria</span>
+          <div style="font-weight: 600; color: var(--clay); margin-top: 2px;">R 1,690</div>
+        </div>
+      </div>
+      <div class="cart-item-row">
+        <input type="checkbox" class="cart-check" checked data-price="2450" onchange="calcCartTotal()">
+        <div class="cart-thumb"></div>
+        <div class="cart-meta">
+          <b>Overberg Canvas Jacket</b>
+          <span>Bokkie Tailors &middot; Cape Town</span>
+          <div style="font-weight: 600; color: var(--clay); margin-top: 2px;">R 2,450</div>
+        </div>
+      </div>
+      <div class="cart-item-row">
+        <input type="checkbox" class="cart-check" checked data-price="1200" onchange="calcCartTotal()">
+        <div class="cart-thumb"></div>
+        <div class="cart-meta">
+          <b>Oversized Boxy Hoodie</b>
+          <span>Nkosi Studio &middot; Johannesburg</span>
+          <div style="font-weight: 600; color: var(--clay); margin-top: 2px;">R 1,200</div>
+        </div>
+      </div>
+    </div>
+    <div class="drawer-foot">
+      <div class="cart-total-row">
+        <span>Selected Total:</span>
+        <b id="cartTotalDisplay">R 5,340 ZAR</b>
+      </div>
+      <a href="cart.html" class="btn" style="width: 100%; justify-content: center; background: var(--clay); border-color: var(--clay);">
+        Open Full Bag &rarr;
+      </a>
+    </div>
+  </aside>
+
+  <!-- Filter & Modal Logic -->
+  <script>
+    let currentCategory = 'all';
+    let currentHub = 'all';
+
+    function filterCategory(cat, tabElem) {
+      document.querySelectorAll('.coll-tab').forEach(t => t.classList.remove('active'));
+      tabElem.classList.add('active');
+      currentCategory = cat;
+      applyFilters();
+    }
+
+    function filterHub(hub, btnElem) {
+      document.querySelectorAll('.coll-hub-btn').forEach(b => b.classList.remove('active'));
+      btnElem.classList.add('active');
+      currentHub = hub;
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const cards = document.querySelectorAll('#collectionGrid .coll-card');
+      cards.forEach(card => {
+        const itemCat = card.getAttribute('data-cat');
+        const itemHub = card.getAttribute('data-hub');
+        const itemFilter = card.getAttribute('data-filter');
+
+        const catMatch = (currentCategory === 'all') || 
+                         (currentCategory === itemCat) || 
+                         (currentCategory === itemFilter);
+        const hubMatch = (currentHub === 'all') || (currentHub === itemHub);
+
+        card.style.display = (catMatch && hubMatch) ? 'flex' : 'none';
+      });
+    }
+
+    function openAboutModal() {
+      document.getElementById('aboutModal').classList.add('open');
+    }
+
+    function closeAboutModal(e) {
+      if (e.target.id === 'aboutModal') {
+        document.getElementById('aboutModal').classList.remove('open');
+      }
+    }
+
+    function openDrawer(id) {
+      document.getElementById('drawerBackdrop').classList.add('open');
+      document.getElementById(id).classList.add('open');
+    }
+
+    function closeAllDrawers() {
+      document.getElementById('drawerBackdrop').classList.remove('open');
+      document.querySelectorAll('.drawer').forEach(d => d.classList.remove('open'));
+    }
+
+    function calcCartTotal() {
+      let total = 0;
+      let count = 0;
+      const checkboxes = document.querySelectorAll('.cart-check');
+      checkboxes.forEach(chk => {
+        if (chk.checked) {
+          total += parseInt(chk.getAttribute('data-price'), 10);
+          count++;
+        }
+      });
+      document.getElementById('cartTotalDisplay').innerText = `R ${total.toLocaleString('en-ZA')} ZAR`;
+      document.getElementById('cartCount').innerText = count;
+    }
+
+    function addToCartDrawer(name, price, hub) {
+      const container = document.getElementById('cartItemsContainer');
+      const row = document.createElement('div');
+      row.className = 'cart-item-row';
+      row.innerHTML = `
+        <input type="checkbox" class="cart-check" checked data-price="${price}" onchange="calcCartTotal()">
+        <div class="cart-thumb"></div>
+        <div class="cart-meta">
+          <b>${name}</b>
+          <span>${hub}</span>
+          <div style="font-weight: 600; color: var(--clay); margin-top: 2px;">R ${price.toLocaleString('en-ZA')}</div>
+        </div>
+      `;
+      container.prepend(row);
+      calcCartTotal();
+      openDrawer('cartDrawer');
+    }
+  </script>
+
+</body>
+</html>
