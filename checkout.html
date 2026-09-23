@@ -1,160 +1,238 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Managed Checkout &middot; ROOTED</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Checkout — ROOTED</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Top Progress Bar -->
-  <div class="topbar"><div class="topbar-fill" style="width: 100%;"></div></div>
+  <div class="top-progress"><span style="width:92%"></span></div>
 
-  <!-- ROOTED Typographic Wordmark -->
-  <a href="index.html" class="brandmark" aria-label="ROOTED">
-    R<span>O</span><span class="rooted-o"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="10"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><path d="M50 52 L26 76 M50 68 L32 86 M50 52 L74 76 M50 68 L68 86"/></svg></span>TED
-  </a>
-
-  <!-- Navigation Dock: Home, Discover, Cart -->
-  <nav class="navrail">
-    <div class="navrail-inner">
-      <a href="index.html" class="navlink"><span class="dot"></span> <span>Home</span></a>
-      <a href="dashboard.html" class="navlink"><span class="dot"></span> <span>Discover</span></a>
-      <a href="cart.html" class="navlink"><span class="dot"></span> <span>Cart</span></a>
+  <nav class="rooted-nav">
+    <a class="nav-brand" href="index.html">
+      <span class="root-symbol">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="9">
+          <circle cx="50" cy="50" r="43"/>
+          <path d="M50 8v84M50 50 25 75M50 65 32 83M50 50l25 25M50 65l18 18"/>
+        </svg>
+      </span>
+      ROOTED
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="dashboard.html">Discover</a>
+      <a class="nav-link" href="orders.html">Orders</a>
+    </div>
+    <div class="nav-actions">
+      <a class="nav-action" href="wishlist.html">♡<span class="nav-badge" data-wish-count>0</span></a>
+      <a class="nav-action" href="cart.html">⌂<span class="nav-badge" data-cart-count>0</span></a>
     </div>
   </nav>
 
-  <!-- Checkout Container -->
-  <section class="section" style="padding-top: 130px; padding-bottom: 80px;">
-    <div class="section-head" style="margin-bottom: 30px;">
-      <div class="eyebrow">MANAGED FULFILLMENT & PAYMENT</div>
-      <h2>Finalize Order</h2>
-      <p class="lede">Consolidated multi-brand delivery handled end-to-end by ROOTED logistics.</p>
+  <header class="page-hero">
+    <div class="container">
+      <div class="eyebrow">MANAGED CHECKOUT</div>
+      <h1>Bring it home.</h1>
+      <p class="lede">One consolidated order for pieces across independent South African fashion houses.</p>
     </div>
+  </header>
 
-    <div class="checkout-page-grid">
-      
-      <!-- Checkout Form -->
-      <form onsubmit="event.preventDefault(); alert('Order Confirmed! Your items will be consolidated at our central depot and shipped within 48 hours.'); window.location.href='index.html';">
-        
-        <!-- Step 1: Customer Contact -->
-        <div class="form-section-card">
-          <h3>1. Contact Information</h3>
-          <div class="form-row-2">
-            <div class="form-field">
-              <label>First Name</label>
-              <input type="text" required class="form-input" value="Thabo">
-            </div>
-            <div class="form-field">
-              <label>Last Name</label>
-              <input type="text" required class="form-input" value="Mokoena">
-            </div>
-          </div>
-          <div class="form-row-2">
-            <div class="form-field">
-              <label>Email Address</label>
-              <input type="email" required class="form-input" value="thabo.mokoena@gmail.com">
-            </div>
-            <div class="form-field">
-              <label>Mobile Number</label>
-              <input type="tel" required class="form-input" value="+27 82 490 1192">
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 2: Shipping Destination -->
-        <div class="form-section-card">
-          <h3>2. Delivery Address</h3>
-          <div class="form-field">
-            <label>Street Address</label>
-            <input type="text" required class="form-input" value="14 Lynnwood Road">
-          </div>
-          <div class="form-row-2">
-            <div class="form-field">
-              <label>Suburb / District</label>
-              <input type="text" required class="form-input" value="Brooklyn">
-            </div>
-            <div class="form-field">
-              <label>City Hub</label>
-              <input type="text" required class="form-input" value="Pretoria">
-            </div>
-          </div>
-          <div class="form-row-2">
-            <div class="form-field">
-              <label>Postal Code</label>
-              <input type="text" required class="form-input" value="0181">
-            </div>
-            <div class="form-field">
-              <label>Province</label>
-              <input type="text" required class="form-input" value="Gauteng">
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 3: Payment Method -->
-        <div class="form-section-card">
-          <h3>3. Payment Method</h3>
-          <p style="font-size: 13px; color: var(--ink-soft); margin-bottom: 12px;">All payments are securely processed via South African payment gateways:</p>
-          <div class="payment-methods-row">
-            <div class="payment-method-card active" onclick="selectPayment(this)">Ozow Instant EFT</div>
-            <div class="payment-method-card" onclick="selectPayment(this)">PayFast (Debit/Credit)</div>
-            <div class="payment-method-card" onclick="selectPayment(this)">SnapScan / Zapper</div>
-          </div>
-        </div>
-
-        <button type="submit" class="btn" style="width: 100%; justify-content: center; background: var(--clay); border-color: var(--clay); font-weight: 600; padding: 18px 24px;">
-          Pay R 3,770 ZAR & Complete Order &rarr;
-        </button>
-      </form>
-
-      <!-- Order Recap Sidebar -->
-      <aside class="order-summary-box">
-        <h3 style="font-size: 18px; margin-bottom: 16px;">Order Breakdown</h3>
-        <div style="font-size: 13px; display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; border-bottom: 1px solid var(--line); padding-bottom: 14px;">
-          <div style="display: flex; justify-content: space-between;">
-            <span>1x Overberg Field Jacket (Bokkie Tailors)</span>
-            <b>R 2,450</b>
-          </div>
-          <div style="display: flex; justify-content: space-between;">
-            <span>1x Maboneng Boxy Hoodie (Nkosi Studio)</span>
-            <b>R 1,200</b>
-          </div>
-          <div style="display: flex; justify-content: space-between; color: var(--ink-soft);">
-            <span>Consolidated Nationwide Courier</span>
-            <span>R 120</span>
-          </div>
-        </div>
-        <div class="summary-row total-row" style="padding-top: 0;">
-          <span>Total</span>
-          <span>R 3,770 ZAR</span>
-        </div>
-        <div style="margin-top: 18px;">
-          <a href="cart.html" style="font-size: 12.5px; color: var(--clay); text-decoration: underline; display: inline-block;">&larr; Return to Shopping Bag to edit items</a>
-        </div>
-      </aside>
-
+  <main class="section">
+    <div class="container">
+      <div id="checkout" class="checkout-grid"></div>
     </div>
-  </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-bottom">
-      <div>&copy; 2026 ROOTED South Africa. Discover local. Wear local.</div>
-      <div class="footer-bottom-links">
-        <a href="index.html">Home</a>
-        <a href="dashboard.html">Discover</a>
-        <a href="cart.html">Cart</a>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© <span data-year></span> ROOTED South Africa</span>
+        <span>Secure managed fulfillment</span>
       </div>
     </div>
   </footer>
 
-  <script>
-    function selectPayment(el) {
-      document.querySelectorAll('.payment-method-card').forEach(c => c.classList.remove('active'));
-      el.classList.add('active');
-    }
-  </script>
+  <div class="toast"></div>
 
+  <script src="app.js"></script>
+  <script>
+    function drawCheckout() {
+      const allCart = getCart();
+      const activeItems = allCart.filter(x => x.selected !== false);
+
+      if (!activeItems.length) {
+        document.getElementById("checkout").innerHTML = `
+          <div class="empty" style="grid-column:1/-1">
+            <h2>Your bag is empty or no items are checked.</h2>
+            <p class="lede" style="margin:10px auto 20px">Return to your shopping bag to select the pieces you wish to buy.</p>
+            <a class="btn" href="cart.html">Return to Bag →</a>
+          </div>
+        `;
+        return;
+      }
+
+      let sub = activeItems.reduce((a, x) => a + (product(x.id)?.price || 0) * x.qty, 0);
+      let ship = sub >= 1500 ? 0 : 120;
+      let total = sub + ship;
+
+      document.getElementById("checkout").innerHTML = `
+        <form class="checkout-form" onsubmit="placeOrder(event)">
+          <div class="form-card">
+            <h3>1. Your Details</h3>
+            <div class="form-grid">
+              <div class="field">
+                <label>First Name</label>
+                <input name="first" required value="Thabo">
+              </div>
+              <div class="field">
+                <label>Last Name</label>
+                <input name="last" required value="Mokoena">
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label>Email Address</label>
+                <input name="email" type="email" required value="thabo.mokoena@gmail.com">
+              </div>
+              <div class="field">
+                <label>Mobile Number</label>
+                <input name="phone" required value="+27 82 490 1192">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3>2. Delivery Destination</h3>
+            <div class="field">
+              <label>Street Address</label>
+              <input name="address" required value="14 Lynnwood Road">
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label>Suburb</label>
+                <input name="suburb" required value="Brooklyn">
+              </div>
+              <div class="field">
+                <label>City Hub</label>
+                <input name="city" required value="Pretoria">
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label>Province</label>
+                <select name="province">
+                  <option selected>Gauteng</option>
+                  <option>Western Cape</option>
+                  <option>KwaZulu-Natal</option>
+                  <option>Eastern Cape</option>
+                  <option>Free State</option>
+                  <option>Mpumalanga</option>
+                  <option>Limpopo</option>
+                  <option>North West</option>
+                  <option>Northern Cape</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Postal Code</label>
+                <input name="postal" required value="0181">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3>3. Payment Gateway</h3>
+            <div class="payment-options">
+              <button type="button" class="payment active" onclick="choosePay(this)">Ozow Instant EFT</button>
+              <button type="button" class="payment" onclick="choosePay(this)">PayFast (Cards)</button>
+              <button type="button" class="payment" onclick="choosePay(this)">SnapScan / Zapper</button>
+            </div>
+            <div class="secure-note">
+              ✓ 256-bit encryption · Official South African payment gateway integration.
+            </div>
+          </div>
+
+          <button class="btn clay" style="width:100%;padding:17px;font-size:14.5px">
+            Pay ${money(total)} & Complete Order →
+          </button>
+        </form>
+
+        <aside class="summary">
+          <h3>Your Order</h3>
+          ${activeItems.map(x => {
+            const p = product(x.id);
+            return `
+              <div class="sum-row">
+                <span>${x.qty} × ${p ? p.name : 'Piece'} (${x.size})</span>
+                <span>${money(p ? p.price * x.qty : 0)}</span>
+              </div>
+            `;
+          }).join("")}
+          <div class="sum-row">
+            <span>Consolidated Courier</span>
+            <span>${ship ? money(ship) : 'Complimentary'}</span>
+          </div>
+          <div class="sum-row sum-total">
+            <span>Total</span>
+            <span>${money(total)}</span>
+          </div>
+          <div class="secure-note">
+            ROOTED consolidates multi-brand orders into a single physical dispatch package.
+          </div>
+          <a href="cart.html" style="display:inline-block;margin-top:14px;font-size:12px;color:var(--clay);text-decoration:underline">
+            ← Edit items in bag
+          </a>
+        </aside>
+      `;
+    }
+
+    function choosePay(b) {
+      document.querySelectorAll(".payment").forEach(x => x.classList.remove("active"));
+      b.classList.add("active");
+    }
+
+    function placeOrder(e) {
+      e.preventDefault();
+      const allCart = getCart();
+      const checkedItems = allCart.filter(x => x.selected !== false);
+      const remainingItems = allCart.filter(x => x.selected === false);
+      const f = new FormData(e.target);
+
+      const sub = checkedItems.reduce((a, x) => a + (product(x.id)?.price || 0) * x.qty, 0);
+      const ship = sub >= 1500 ? 0 : 120;
+
+      const order = {
+        id: "RTD-" + Date.now().toString().slice(-6),
+        date: new Date().toLocaleDateString("en-ZA", { day: "2-digit", month: "short", year: "numeric" }),
+        status: "Order confirmed",
+        customer: {
+          first: f.get("first"),
+          last: f.get("last"),
+          email: f.get("email"),
+          phone: f.get("phone"),
+          address: f.get("address"),
+          suburb: f.get("suburb"),
+          city: f.get("city"),
+          province: f.get("province"),
+          postal: f.get("postal")
+        },
+        items: checkedItems,
+        total: sub + ship
+      };
+
+      localStorage.setItem("rootedLastOrder", JSON.stringify(order));
+      const existingOrders = JSON.parse(localStorage.getItem("rootedOrders") || "[]");
+      localStorage.setItem("rootedOrders", JSON.stringify([order, ...existingOrders]));
+      
+      setCart(remainingItems);
+      location.href = "orders.html?new=" + order.id;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      drawCheckout();
+      setProgress(92);
+    });
+  </script>
 </body>
 </html>

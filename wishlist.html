@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Saved Pieces — ROOTED</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="top-progress"><span style="width:72%"></span></div>
+
+  <nav class="rooted-nav">
+    <a class="nav-brand" href="index.html">
+      <span class="root-symbol">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="9">
+          <circle cx="50" cy="50" r="43"/>
+          <path d="M50 8v84M50 50 25 75M50 65 32 83M50 50l25 25M50 65l18 18"/>
+        </svg>
+      </span>
+      ROOTED
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="dashboard.html">Discover</a>
+      <a class="nav-link" href="orders.html">Orders</a>
+    </div>
+    <div class="nav-actions">
+      <a class="nav-action active" href="wishlist.html">♡<span class="nav-badge" data-wish-count>0</span></a>
+      <a class="nav-action" href="cart.html">⌂<span class="nav-badge" data-cart-count>0</span></a>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <div class="container">
+      <div class="eyebrow">YOUR COLLECTION</div>
+      <h1>Pieces you want to remember.</h1>
+      <p class="lede">Save garments while exploring local ateliers. Your saved collection stays available across your device.</p>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div id="saved" class="product-grid"></div>
+      <div id="empty" class="empty" style="display:none">
+        <div class="eyebrow" style="justify-content:center">NOTHING SAVED YET</div>
+        <h2>Start curating your wardrobe.</h2>
+        <p class="lede" style="margin:10px auto 20px">Tap the heart on any garment card to bookmark it for later.</p>
+        <a class="btn" href="dashboard.html">Discover pieces →</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© <span data-year></span> ROOTED South Africa</span>
+        <span>Discover local. Wear local.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast"></div>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const list = ROOTED.products.filter(p => getWish().includes(p.id));
+      renderProducts(list, document.getElementById("saved"));
+      document.getElementById("empty").style.display = list.length ? "none" : "block";
+      setProgress(72);
+    });
+  </script>
+</body>
+</html>

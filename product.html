@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Piece — ROOTED</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="top-progress"><span style="width:66%"></span></div>
+
+  <nav class="rooted-nav">
+    <a class="nav-brand" href="index.html">
+      <span class="root-symbol">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="9">
+          <circle cx="50" cy="50" r="43"/>
+          <path d="M50 8v84M50 50 25 75M50 65 32 83M50 50l25 25M50 65l18 18"/>
+        </svg>
+      </span>
+      ROOTED
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="dashboard.html">Discover</a>
+      <a class="nav-link" href="orders.html">Orders</a>
+    </div>
+    <div class="nav-actions">
+      <a class="nav-action" href="wishlist.html">♡<span class="nav-badge" data-wish-count>0</span></a>
+      <a class="nav-action" href="cart.html">⌂<span class="nav-badge" data-cart-count>0</span></a>
+    </div>
+  </nav>
+
+  <main class="product-page">
+    <section class="section">
+      <div class="container">
+        <div id="product" class="product-layout"></div>
+      </div>
+    </section>
+
+    <!-- Cross-Brand Recommendations -->
+    <section class="section" style="background:var(--paper-2);padding-top:60px">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">YOU MAY ALSO LIKE</div>
+            <h2>Keep exploring.</h2>
+          </div>
+        </div>
+        <div id="related" class="product-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© <span data-year></span> ROOTED South Africa</span>
+        <span>Discover local. Wear local.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast"></div>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const p = product(new URLSearchParams(location.search).get("id")) || ROOTED.products[0];
+      document.title = p.name + " — ROOTED";
+      let size = p.sizes[0], color = p.colors[0], qty = 1;
+
+      document.getElementById("product").innerHTML = `
+        <div class="product-main-image">
+          <img src="${p.img}" alt="${p.name}">
+        </div>
+        <div class="product-detail">
+          <a class="brand-link" href="brand.html?brand=${p.brandId}">${p.brand} · ${brand(p.brandId).location}</a>
+          <h1>${p.name}</h1>
+          <div class="product-price">${money(p.price)}</div>
+          <p class="product-description">${p.desc}</p>
+
+          <div class="option-group">
+            <div class="option-title">Size (South African Apparel Scale)</div>
+            <div class="option-row" id="sizes">
+              ${p.sizes.map((s, i) => `<button class="option ${i === 0 ? 'active' : ''}" data-v="${s}">${s}</button>`).join("")}
+            </div>
+          </div>
+
+          <div class="option-group">
+            <div class="option-title">Finish / Colour</div>
+            <div class="option-row" id="colors">
+              ${p.colors.map((s, i) => `<button class="option ${i === 0 ? 'active' : ''}" data-v="${s}">${s}</button>`).join("")}
+            </div>
+          </div>
+
+          <div class="buy-row">
+            <div class="qty-control">
+              <button id="minus">−</button>
+              <span id="qty">1</span>
+              <button id="plus">+</button>
+            </div>
+            <button class="btn clay" id="add">Add to ROOTED bag →</button>
+          </div>
+
+          <button class="btn ghost" style="width:100%;margin-top:10px" id="save">♡ Save to collection</button>
+
+          <div class="info-list">
+            <div><span>ROOTED fulfillment</span><span>Managed central logistics</span></div>
+            <div><span>Dispatch</span><span>Within 48 hours</span></div>
+            <div><span>Consolidated courier</span><span>Free over R 1,500</span></div>
+            <div><span>Studio maker</span><span>${p.brand}</span></div>
+          </div>
+        </div>
+      `;
+
+      document.querySelectorAll("#sizes .option").forEach(x => x.onclick = () => {
+        size = x.dataset.v;
+        document.querySelectorAll("#sizes .option").forEach(y => y.classList.remove("active"));
+        x.classList.add("active");
+      });
+
+      document.querySelectorAll("#colors .option").forEach(x => x.onclick = () => {
+        color = x.dataset.v;
+        document.querySelectorAll("#colors .option").forEach(y => y.classList.remove("active"));
+        x.classList.add("active");
+      });
+
+      document.getElementById("minus").onclick = () => {
+        qty = Math.max(1, qty - 1);
+        document.getElementById("qty").textContent = qty;
+      };
+      document.getElementById("plus").onclick = () => {
+        qty++;
+        document.getElementById("qty").textContent = qty;
+      };
+
+      document.getElementById("add").onclick = () => addToCart(p.id, qty, size, color);
+      
+      const saveBtn = document.getElementById("save");
+      const syncSaveBtn = () => {
+        const isSaved = getWish().includes(p.id);
+        saveBtn.innerHTML = isSaved ? "♥ Saved in your collection" : "♡ Save to collection";
+      };
+      syncSaveBtn();
+      saveBtn.onclick = () => {
+        toggleWish(p.id);
+        syncSaveBtn();
+      };
+
+      renderProducts(ROOTED.products.filter(x => x.id !== p.id && x.category === p.category).slice(0, 4), document.getElementById("related"));
+      setProgress(66);
+    });
+  </script>
+</body>
+</html>

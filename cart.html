@@ -1,303 +1,211 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Universal Bag &middot; ROOTED</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Your Bag — ROOTED</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Top Progress Bar -->
-  <div class="topbar"><div class="topbar-fill" style="width: 50%;"></div></div>
+  <div class="top-progress"><span style="width:80%"></span></div>
 
-  <!-- ROOTED Typographic Wordmark -->
-  <a href="index.html" class="brandmark" aria-label="ROOTED">
-    R<span>O</span><span class="rooted-o"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="10"><circle cx="50" cy="50" r="44"/><line x1="50" y1="6" x2="50" y2="94"/><path d="M50 52 L26 76 M50 68 L32 86 M50 52 L74 76 M50 68 L68 86"/></svg></span>TED
-  </a>
-
-  <!-- Top-Right Actions -->
-  <div class="top-actions">
-    <button class="icon-btn" onclick="alert('Profile details: Thabo Mokoena · Brooklyn, Pretoria')">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      <span class="label">Profile</span>
-    </button>
-  </div>
-
-  <!-- Navigation Dock: Home, Discover, Cart (Active) -->
-  <nav class="navrail">
-    <div class="navrail-inner">
-      <a href="index.html" class="navlink"><span class="dot"></span> <span>Home</span></a>
-      <a href="dashboard.html" class="navlink"><span class="dot"></span> <span>Discover</span></a>
-      <a href="cart.html" class="navlink active"><span class="dot"></span> <span>Cart</span></a>
+  <nav class="rooted-nav">
+    <a class="nav-brand" href="index.html">
+      <span class="root-symbol">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="9">
+          <circle cx="50" cy="50" r="43"/>
+          <path d="M50 8v84M50 50 25 75M50 65 32 83M50 50l25 25M50 65l18 18"/>
+        </svg>
+      </span>
+      ROOTED
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="dashboard.html">Discover</a>
+      <a class="nav-link" href="orders.html">Orders</a>
+    </div>
+    <div class="nav-actions">
+      <a class="nav-action" href="wishlist.html">♡<span class="nav-badge" data-wish-count>0</span></a>
+      <a class="nav-action active" href="cart.html">⌂<span class="nav-badge" data-cart-count>0</span></a>
     </div>
   </nav>
 
-  <!-- Dedicated Cart Layout -->
-  <section class="section" style="padding-top: 130px; padding-bottom: 50px;">
-    <div class="section-head" style="margin-bottom: 30px;">
-      <div class="eyebrow">CONSOLIDATED MULTI-BRAND BAG</div>
-      <h2>Shopping Bag (<span id="cartCountTitle">2</span>)</h2>
-      <p class="lede">Select the items you wish to process in this checkout order. All items are dispatched together from ROOTED centralized storage.</p>
+  <header class="page-hero">
+    <div class="container">
+      <div class="eyebrow">YOUR ROOTED BAG</div>
+      <h1>Everything you found.</h1>
+      <p class="lede">Review your pieces, mix multiple local brands, and let ROOTED handle consolidated fulfillment.</p>
     </div>
+  </header>
 
-    <div class="cart-page-grid">
-      
-      <!-- Cart Item Column -->
-      <div id="cartItemsList">
+  <main class="section">
+    <div class="container">
+      <div id="cartArea" class="cart-layout"></div>
+    </div>
+  </main>
 
-        <!-- Cart Item 1 -->
-        <div class="cart-item-card" id="itemCard1">
-          <input type="checkbox" class="cart-check" checked data-id="1" data-price="2450" onchange="recalculateCart()">
-          <div class="cart-item-thumb">
-            <img src="https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=300" alt="Overberg Field Jacket">
-          </div>
-          <div class="cart-item-details">
-            <div class="item-title">Overberg Field Jacket</div>
-            <span class="item-brand">Bokkie Tailors &middot; Cape Town</span>
-            <div style="font-size: 13px; color: var(--ink-soft);">Size: Medium (38) &middot; Raw Ochre Duck</div>
-            <div class="cart-item-controls">
-              <div class="qty-stepper">
-                <button class="qty-btn" onclick="updateQty(1, -1)">-</button>
-                <span class="qty-val" id="qtyVal1">1</span>
-                <button class="qty-btn" onclick="updateQty(1, 1)">+</button>
-              </div>
-              <button class="remove-btn" onclick="removeItem(1)">Remove</button>
-            </div>
-          </div>
-          <div class="cart-item-price" id="itemPrice1">R 2,450</div>
+  <section class="section" style="background:var(--paper-2)">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">STILL CURIOUS?</div>
+          <h2>More from the collective.</h2>
         </div>
-
-        <!-- Cart Item 2 -->
-        <div class="cart-item-card" id="itemCard2">
-          <input type="checkbox" class="cart-check" checked data-id="2" data-price="1200" onchange="recalculateCart()">
-          <div class="cart-item-thumb">
-            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=300" alt="Maboneng Boxy Hoodie">
-          </div>
-          <div class="cart-item-details">
-            <div class="item-title">Maboneng Boxy Zip Hoodie</div>
-            <span class="item-brand">Nkosi Studio &middot; Johannesburg</span>
-            <div style="font-size: 13px; color: var(--ink-soft);">Size: Large (40) &middot; Charcoal Loopback</div>
-            <div class="cart-item-controls">
-              <div class="qty-stepper">
-                <button class="qty-btn" onclick="updateQty(2, -1)">-</button>
-                <span class="qty-val" id="qtyVal2">1</span>
-                <button class="qty-btn" onclick="updateQty(2, 1)">+</button>
-              </div>
-              <button class="remove-btn" onclick="removeItem(2)">Remove</button>
-            </div>
-          </div>
-          <div class="cart-item-price" id="itemPrice2">R 1,200</div>
-        </div>
-
       </div>
-
-      <!-- Order Summary Column -->
-      <aside class="order-summary-box">
-        <h3 style="font-size: 20px; margin-bottom: 16px;">Order Summary</h3>
-        <div class="summary-row">
-          <span>Selected Items (<span id="summarySelectedCount">2</span>)</span>
-          <span id="summarySubtotal">R 3,650</span>
-        </div>
-        <div class="summary-row">
-          <span>Nationwide Consolidated Courier</span>
-          <span id="summaryShipping">R 120</span>
-        </div>
-        <div class="summary-row">
-          <span>Hub Packaging & Inspection</span>
-          <span style="color: var(--moss); font-weight: 600;">Complimentary</span>
-        </div>
-        <div class="summary-row total-row">
-          <span>Order Total</span>
-          <span id="summaryGrandTotal">R 3,770 ZAR</span>
-        </div>
-
-        <div style="margin-top: 24px;">
-          <a href="checkout.html" class="btn" style="width: 100%; justify-content: center; background: var(--clay); border-color: var(--clay);">
-            Proceed to Checkout &rarr;
-          </a>
-        </div>
-        
-        <div style="margin-top: 16px; font-size: 12px; color: var(--ink-soft); line-height: 1.5; text-align: center;">
-          Pay via PayFast, Ozow Instant EFT, or Card on the next screen.
-        </div>
-      </aside>
-
+      <div id="suggested" class="product-grid"></div>
     </div>
   </section>
 
-  <!-- Cross-Brand Discovery Section -->
-  <section class="section wrap-paper" style="border-top: 1px solid var(--line); padding-top: 80px; padding-bottom: 100px;">
-    <div class="section-head" style="margin-bottom: 30px;">
-      <div class="eyebrow">SIMILAR PIECES FROM OTHER ATELIERS</div>
-      <h2>Discovered while browsing.</h2>
-      <p class="lede">Pieces crafted by peer labels that coordinate with your current selections.</p>
-    </div>
-
-    <div class="collection-grid">
-      <!-- Similar Item 1 -->
-      <a href="cart.html" class="coll-card" onclick="addSuggested('Union Shirt Jacket', 1690, 'Studio Jacaranda', 'Pretoria'); return false;">
-        <div class="coll-card-thumb">
-          <span class="badge-tag">Pretoria</span>
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600" alt="Union Shirt Jacket">
-        </div>
-        <div class="coll-card-meta">
-          <div class="prod-title">Union Shirt Jacket</div>
-          <span class="prod-hub">Studio Jacaranda &middot; Pretoria</span>
-          <div class="coll-card-bottom">
-            <span class="prod-price">R 1,690</span>
-            <span class="btn ghost" style="padding: 6px 12px; font-size: 11px;">+ Add to Bag</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Similar Item 2 -->
-      <a href="cart.html" class="coll-card" onclick="addSuggested('Quilted Puffer Jacket', 2150, 'Signal Hill', 'Cape Town'); return false;">
-        <div class="coll-card-thumb">
-          <span class="badge-tag">Cape Town</span>
-          <img src="https://images.unsplash.com/photo-1544441893-675973e31985?w=600" alt="Quilted Puffer Jacket">
-        </div>
-        <div class="coll-card-meta">
-          <div class="prod-title">Quilted Puffer Jacket</div>
-          <span class="prod-hub">Signal Hill &middot; Cape Town</span>
-          <div class="coll-card-bottom">
-            <span class="prod-price">R 2,150</span>
-            <span class="btn ghost" style="padding: 6px 12px; font-size: 11px;">+ Add to Bag</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Similar Item 3 -->
-      <a href="cart.html" class="coll-card" onclick="addSuggested('Ochre Cargo Pant', 1550, 'Veld Craft', 'Durban'); return false;">
-        <div class="coll-card-thumb">
-          <span class="badge-tag">Durban</span>
-          <img src="https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=600" alt="Ochre Cargo Pant">
-        </div>
-        <div class="coll-card-meta">
-          <div class="prod-title">Ochre Cargo Pant</div>
-          <span class="prod-hub">Veld Craft &middot; Durban</span>
-          <div class="coll-card-bottom">
-            <span class="prod-price">R 1,550</span>
-            <span class="btn ghost" style="padding: 6px 12px; font-size: 11px;">+ Add to Bag</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Similar Item 4 -->
-      <a href="cart.html" class="coll-card" onclick="addSuggested('Coastline Varsity Jacket', 1850, 'Veld Craft', 'Durban'); return false;">
-        <div class="coll-card-thumb">
-          <span class="badge-tag">Durban</span>
-          <img src="https://images.unsplash.com/photo-1548883354-7622d03aca27?w=600" alt="Coastline Varsity Jacket">
-        </div>
-        <div class="coll-card-meta">
-          <div class="prod-title">Coastline Varsity Jacket</div>
-          <span class="prod-hub">Veld Craft &middot; Durban</span>
-          <div class="coll-card-bottom">
-            <span class="prod-price">R 1,850</span>
-            <span class="btn ghost" style="padding: 6px 12px; font-size: 11px;">+ Add to Bag</span>
-          </div>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-bottom">
-      <div>&copy; 2026 ROOTED South Africa. Discover local. Wear local.</div>
-      <div class="footer-bottom-links">
-        <a href="index.html">Home</a>
-        <a href="dashboard.html">Discover</a>
-        <a href="cart.html">Cart</a>
-        <a href="checkout.html">Checkout</a>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© <span data-year></span> ROOTED South Africa</span>
+        <span>Discover local. Wear local.</span>
       </div>
     </div>
   </footer>
 
-  <!-- Cart Logic -->
+  <div class="toast"></div>
+
+  <script src="app.js"></script>
   <script>
-    const itemData = {
-      1: { price: 2450, qty: 1 },
-      2: { price: 1200, qty: 1 }
-    };
+    let promoDiscount = 0;
 
-    function updateQty(id, delta) {
-      if (!itemData[id]) return;
-      itemData[id].qty += delta;
-      if (itemData[id].qty < 1) itemData[id].qty = 1;
-      document.getElementById(`qtyVal${id}`).innerText = itemData[id].qty;
-      document.getElementById(`itemPrice${id}`).innerText = `R ${(itemData[id].price * itemData[id].qty).toLocaleString('en-ZA')}`;
-      recalculateCart();
-    }
-
-    function removeItem(id) {
-      const card = document.getElementById(`itemCard${id}`);
-      if (card) {
-        card.remove();
-        delete itemData[id];
-        recalculateCart();
-      }
-    }
-
-    function recalculateCart() {
-      let subtotal = 0;
-      let selectedCount = 0;
-      const checkboxes = document.querySelectorAll('.cart-check');
-      checkboxes.forEach(chk => {
-        const id = chk.getAttribute('data-id');
-        const card = document.getElementById(`itemCard${id}`);
-        if (chk.checked && itemData[id]) {
-          subtotal += itemData[id].price * itemData[id].qty;
-          selectedCount += itemData[id].qty;
-          if (card) card.classList.remove('disabled');
-        } else if (card) {
-          card.classList.add('disabled');
-        }
-      });
-
-      const shipping = selectedCount > 0 ? 120 : 0;
-      const grandTotal = subtotal + shipping;
-
-      document.getElementById('summarySelectedCount').innerText = selectedCount;
-      document.getElementById('summarySubtotal').innerText = `R ${subtotal.toLocaleString('en-ZA')}`;
-      document.getElementById('summaryShipping').innerText = `R ${shipping.toLocaleString('en-ZA')}`;
-      document.getElementById('summaryGrandTotal').innerText = `R ${grandTotal.toLocaleString('en-ZA')} ZAR`;
-      document.getElementById('cartCountTitle').innerText = Object.keys(itemData).length;
-    }
-
-    function addSuggested(name, price, brand, hub) {
-      const nextId = Date.now();
-      itemData[nextId] = { price: price, qty: 1 };
-
-      const card = document.createElement('div');
-      card.className = 'cart-item-card';
-      card.id = `itemCard${nextId}`;
-      card.innerHTML = `
-        <input type="checkbox" class="cart-check" checked data-id="${nextId}" data-price="${price}" onchange="recalculateCart()">
-        <div class="cart-item-thumb">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300" alt="${name}">
-        </div>
-        <div class="cart-item-details">
-          <div class="item-title">${name}</div>
-          <span class="item-brand">${brand} &middot; ${hub}</span>
-          <div style="font-size: 13px; color: var(--ink-soft);">Size: Medium (38)</div>
-          <div class="cart-item-controls">
-            <div class="qty-stepper">
-              <button class="qty-btn" onclick="updateQty(${nextId}, -1)">-</button>
-              <span class="qty-val" id="qtyVal${nextId}">1</span>
-              <button class="qty-btn" onclick="updateQty(${nextId}, 1)">+</button>
-            </div>
-            <button class="remove-btn" onclick="removeItem(${nextId})">Remove</button>
+    function drawCart() {
+      const c = getCart();
+      const area = document.getElementById("cartArea");
+      if (!c.length) {
+        area.innerHTML = `
+          <div class="empty" style="grid-column:1/-1">
+            <div class="eyebrow" style="justify-content:center">YOUR BAG IS QUIET</div>
+            <h2>No pieces in your bag yet.</h2>
+            <p class="lede" style="margin:10px auto 20px">Explore independent South African labels and bring something home.</p>
+            <a class="btn" href="dashboard.html">Discover local pieces →</a>
           </div>
+        `;
+        return;
+      }
+
+      let sub = 0;
+      let activeItems = 0;
+
+      const cards = c.map((x, i) => {
+        const p = product(x.id);
+        if (!p) return "";
+        const isSelected = x.selected !== false;
+        if (isSelected) {
+          sub += p.price * x.qty;
+          activeItems += x.qty;
+        }
+        return `
+          <div class="cart-card ${isSelected ? '' : 'disabled'}">
+            <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="toggleSelect(${i})" aria-label="Select ${p.name}">
+            <div class="cart-thumb">
+              <img src="${p.img}" alt="${p.name}">
+            </div>
+            <div class="cart-meta">
+              <h3>${p.name}</h3>
+              <small>${p.brand}</small>
+              <p>Size: ${x.size} · Color: ${x.color}</p>
+              <div class="cart-controls">
+                <div class="mini-qty">
+                  <button onclick="change(${i}, -1)">−</button>
+                  <span>${x.qty}</span>
+                  <button onclick="change(${i}, 1)">+</button>
+                </div>
+                <button class="remove" onclick="removeCart(${i})">Remove</button>
+              </div>
+            </div>
+            <div class="cart-price">${money(p.price * x.qty)}</div>
+          </div>
+        `;
+      }).join("");
+
+      const discountAmt = Math.round(sub * promoDiscount);
+      const discountedSub = Math.max(0, sub - discountAmt);
+      const shipping = (discountedSub >= 1500 || activeItems === 0) ? 0 : 120;
+      const total = discountedSub + shipping;
+
+      area.innerHTML = `
+        <div>
+          ${cards}
+          <a class="btn ghost" href="dashboard.html" style="margin-top:14px">← Continue discovering</a>
         </div>
-        <div class="cart-item-price" id="itemPrice${nextId}">R ${price.toLocaleString('en-ZA')}</div>
+        <aside class="summary">
+          <h3>Order summary</h3>
+          <div class="sum-row">
+            <span>Selected Items (${activeItems})</span>
+            <span>${money(sub)}</span>
+          </div>
+          ${promoDiscount > 0 ? `
+          <div class="sum-row" style="color:var(--clay)">
+            <span>ROOTED10 Promo (10%)</span>
+            <span>-${money(discountAmt)}</span>
+          </div>` : ''}
+          <div class="sum-row">
+            <span>Consolidated Courier</span>
+            <span>${shipping ? money(shipping) : (activeItems ? 'Complimentary' : 'R 0')}</span>
+          </div>
+          <div class="promo">
+            <input id="promo" placeholder="Promo code (e.g. ROOTED10)">
+            <button class="btn small" onclick="applyPromo()">Apply</button>
+          </div>
+          <div class="sum-row sum-total">
+            <span>Total</span>
+            <span>${money(total)}</span>
+          </div>
+          <a class="btn clay" style="width:100%;margin-top:14px" href="${activeItems ? 'checkout.html' : '#'}" onclick="${activeItems ? '' : "event.preventDefault();toast('Please select at least one item before checkout.')"}">
+            Continue to checkout →
+          </a>
+          <div class="secure-note">
+            ✓ Multi-brand consolidation<br>
+            ✓ Tracked nationwide delivery<br>
+            ✓ Direct revenue allocation to makers
+          </div>
+        </aside>
       `;
-
-      document.getElementById('cartItemsList').prepend(card);
-      recalculateCart();
-      window.scrollTo({ top: 100, behavior: 'smooth' });
     }
-  </script>
 
+    function toggleSelect(i) {
+      const c = getCart();
+      c[i].selected = c[i].selected === false ? true : false;
+      setCart(c);
+      drawCart();
+    }
+
+    function change(i, d) {
+      const c = getCart();
+      c[i].qty = Math.max(1, c[i].qty + d);
+      setCart(c);
+      drawCart();
+    }
+
+    function removeCart(i) {
+      const c = getCart();
+      c.splice(i, 1);
+      setCart(c);
+      toast("Piece removed from your bag.");
+      drawCart();
+    }
+
+    function applyPromo() {
+      const v = document.getElementById("promo").value.trim().toUpperCase();
+      if (v === "ROOTED10") {
+        promoDiscount = 0.10;
+        toast("ROOTED10 applied — 10% demo discount active.");
+      } else {
+        promoDiscount = 0;
+        toast("Use code ROOTED10 for the 10% demo discount.");
+      }
+      drawCart();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      drawCart();
+      renderProducts(ROOTED.products.filter(p => !getCart().some(x => x.id === p.id)).slice(0, 4), document.getElementById("suggested"));
+      setProgress(80);
+    });
+  </script>
 </body>
 </html>

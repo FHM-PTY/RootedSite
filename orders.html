@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Orders & Tracking — ROOTED</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="top-progress"><span style="width:100%"></span></div>
+
+  <nav class="rooted-nav">
+    <a class="nav-brand" href="index.html">
+      <span class="root-symbol">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="9">
+          <circle cx="50" cy="50" r="43"/>
+          <path d="M50 8v84M50 50 25 75M50 65 32 83M50 50l25 25M50 65l18 18"/>
+        </svg>
+      </span>
+      ROOTED
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="dashboard.html">Discover</a>
+      <a class="nav-link active" href="orders.html">Orders</a>
+    </div>
+    <div class="nav-actions">
+      <a class="nav-action" href="wishlist.html">♡<span class="nav-badge" data-wish-count>0</span></a>
+      <a class="nav-action" href="cart.html">⌂<span class="nav-badge" data-cart-count>0</span></a>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <div class="container">
+      <div class="eyebrow">YOUR ROOTED JOURNEY</div>
+      <h1>Orders & tracking.</h1>
+      <p class="lede">A dedicated home for every purchase, consolidated shipment update and maker notification.</p>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div id="orderList"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <span>© <span data-year></span> ROOTED South Africa</span>
+        <span>Discover local. Wear local.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast"></div>
+
+  <script src="app.js"></script>
+  <script>
+    function drawOrders() {
+      const os = JSON.parse(localStorage.getItem("rootedOrders") || "[]");
+      const el = document.getElementById("orderList");
+
+      if (!os.length) {
+        el.innerHTML = `
+          <div class="empty">
+            <div class="eyebrow" style="justify-content:center">NO ORDERS YET</div>
+            <h2>Your collection starts here.</h2>
+            <p class="lede" style="margin:10px auto 20px">Once you place an order, live multi-brand consolidation updates appear on this timeline.</p>
+            <a class="btn" href="dashboard.html">Start discovering →</a>
+          </div>
+        `;
+        return;
+      }
+
+      el.innerHTML = os.map(o => `
+        <article class="form-card" style="margin-bottom:24px">
+          <div style="display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap">
+            <div>
+              <div class="eyebrow">CONSIGNMENT ${o.id}</div>
+              <h3>Ordered on ${o.date}</h3>
+              <p style="font-size:12px;color:var(--muted);margin-top:4px">
+                Delivering to ${o.customer?.first || 'Thabo'} ${o.customer?.last || ''} · ${o.customer?.suburb || 'Brooklyn'}, ${o.customer?.city || 'Pretoria'}
+              </p>
+            </div>
+            <strong style="color:var(--clay);font-size:22px;font-family:var(--serif)">${money(o.total)}</strong>
+          </div>
+
+          <div class="timeline" style="margin-top:28px">
+            <div class="timeline-item done">
+              <span class="timeline-dot"></span>
+              <div>
+                <b>1. Order Confirmed & Paid</b>
+                <p>Payment cleared. Telemetry transmitted to maker cutting rooms.</p>
+              </div>
+            </div>
+            <div class="timeline-item done">
+              <span class="timeline-dot"></span>
+              <div>
+                <b>2. Atelier Stock Inspection</b>
+                <p>Garments pulled from central stock allocation for quality inspection.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <div>
+                <b>3. Multi-Brand Consolidation</b>
+                <p>Items packaged together inside single biodegradable ROOTED box.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <div>
+                <b>4. Nationwide Courier Dispatch</b>
+                <p>Direct door-to-door delivery within 48 to 72 hours.</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:18px;border-top:1px solid var(--line);padding-top:14px;font-size:12px;color:var(--muted)">
+            <strong>Items in this run:</strong> ${o.items.map(x => {
+              const p = product(x.id);
+              return `${x.qty}× ${p ? p.name : 'Piece'} (${x.size})`;
+            }).join(" · ")}
+          </div>
+        </article>
+      `).join("");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      drawOrders();
+      const id = new URLSearchParams(location.search).get("new");
+      if (id) toast("Order " + id + " placed successfully!");
+      setProgress(100);
+    });
+  </script>
+</body>
+</html>
